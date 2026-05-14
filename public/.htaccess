@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Phải có chữ 's' ở cuối chữ Options
+Options -Indexes
+
+# Đảm bảo yêu cầu không phải là một tệp hoặc thư mục thực tế
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Điều hướng mọi thứ về index.php
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
