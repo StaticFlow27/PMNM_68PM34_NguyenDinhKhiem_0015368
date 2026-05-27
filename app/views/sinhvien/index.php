@@ -7,5 +7,26 @@
 </head>
 <body>
     <h1>danh sach sinh vien</h1>
+
+    <table>
+        <tr>
+            <th>STT</th>
+            <th>Ho ten</th>
+            <th>MSSV</th>
+            <th>Gioi tinh</th>
+        </tr>
+        <?php
+        foreach ($sinhviens as $index => $sinhvien): ?>
+            <tr>
+                <td><?php echo $index +1; ?></td>
+                <td><?php echo $sinhvien['hoten']; ?></td>
+                <td><?php echo $sinhvien['mssv']; ?></td>
+                <td><?php echo $sinhvien['gioitinh']; ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+    <?php 
+        //var_dump($sinhviens); 
+    ?>
 </body>
 </html>
