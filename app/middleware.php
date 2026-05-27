@@ -5,7 +5,7 @@ session_start();
 
 class middleware{
     public function checkLogin(){
-        $publicPages = ['/home/login'];
+        $publicPages = ['/home/login', '/auth/login'];
         if(!isset($_SESSION['username']) && !in_array($_SERVER['REQUEST_URI'], $publicPages)){
             header('Location: /home/login');
             exit();
