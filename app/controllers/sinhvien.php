@@ -8,10 +8,23 @@ class sinhvien extends Controller{
 
         //tra ve view
         //require_once '../app/views/sinhvien/index.php';
-        $this->view("sinhvien/index", ['sinhviens' => $sinhviens]);
+        $this->view('layout/masterlayout', ['viewname' => 'sinhvien/index', 'sinhviens' => $sinhviens]);
     }
 
-
+    public function store(){
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST'){
+            $hoten = $_POST['hoten'] ?? '';
+            $mssv = $_POST['mssv'] ?? '';
+            $gioitinh = $_POST['gioitinh'] ?? '';
+            $sinhvienModel = $this->model('sinhvienModel');
+            $result = $sinhvienModel->create($hoten, $mssv, $gioitinh);
+            if($result){
+                echo 'Them moi thanh cong';
+            }else{
+                echo 'Them moi that bai';
+            }
+        }
+    }
 
     public function create() {
         echo "Day la trang tao moi sinh vien";

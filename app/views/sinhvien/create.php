@@ -7,5 +7,14 @@
 </head>
 <body>
     <h1>Day la trang tao sinh vien</h1>
+    <form action="/sinhvien/store" method="POST">
+        <label for="hoten">Ho ten</label>
+        <input type="text" id="hoten" name="hoten">
+        <label for="gioitinh">Gioi tinh</label>
+        <input type="text" id="gioitinh" name="gioitinh">
+        <label for="mssv">MSSV</label>
+        <input type="text" id="mssv" name="mssv">
+        <input type="submit" value="Them">
+    </form>
 </body>
 </html>
