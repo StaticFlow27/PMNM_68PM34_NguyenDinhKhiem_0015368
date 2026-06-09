@@ -15,17 +15,30 @@
         }
 
         public function create($hoten, $mssv, $gioitinh){
-            $query= "INSERT INTO tbl_sinhviens(hoten, mssv, gioitinh) VALUES(:hoten, :mssv, :gioitinh)";
+            $query = "INSERT INTO tbl_sinhviens(hoten, mssv, gioitinh) VALUES(:hoten, :mssv, :gioitinh)";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':hoten', $hoten);
             $stmt->bindParam(':mssv', $mssv);
             $stmt->bindParam(':gioitinh', $gioitinh);
-            if($stmt->execute()){
-                return 1;
-            } else {
-                return 0;
-            }
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
 
+        public function paging ($limit = 3, $offset = 0, $search = ""){
+            $query = "SELECT * FROM tbl_sinhviens LIMIT :limit OFFSET :offset";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            //tinh tong so ban ghi
+            $selectAllQuery = $this->conn->query("SELECT COUNT(*) FROM tbl_sinhviens");
+            $totalRecord = $selectAllQuery->fetchColumn();
+
+            $totalPage = ceil(num: $totalRecord / $limit);
+
+            return ['sinhviens' => $result, 'totalPage' => $totalPage];
         }
     }
 ?>

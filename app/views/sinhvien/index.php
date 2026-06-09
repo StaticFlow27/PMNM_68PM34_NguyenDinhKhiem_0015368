@@ -25,8 +25,15 @@
             </tr>
         <?php endforeach; ?>
     </table>
-    <?php 
-        //var_dump($sinhviens); 
-    ?>
+    
+    <div align="center">
+        <?php
+            $pageSize = 3;
+            for($i = 1; $i <= $totalPage; $i++){
+                $offset = ($i - 1) * $pageSize;
+                echo "<a href='/sinhvien/index/$pageSize/$offset'>$i</a> ";
+            }
+        ?>
+    </div>
 </body>
 </html>
