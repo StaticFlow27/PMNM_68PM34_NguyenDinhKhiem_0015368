@@ -3,7 +3,7 @@
 require_once '../app/core/Controller.php';
 
 class sinhvien extends Controller{
-    public function index($limit = 3, $offset = 0, $search = ""){
+    public function index($limit = 5, $offset = 0, $search = ""){
         $sinhvienModel = $this->model('sinhvienModel');
         //$sinhviens = $sinhvienModel->getAll();
         $result = $sinhvienModel->paging($limit, $offset,$search);
@@ -30,12 +30,32 @@ class sinhvien extends Controller{
         }
     }
 
+    public function edit($id){
+        $sinhvienModel = $this->model('sinhvienModel');
+        $sinhvien = $sinhvienModel->getId($id);
+        $this->view('sinhvien/edit', ['sinhvien' => $sinhvien]);
+    }
+
+    public function update($id) {
+        if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST'){
+            $hoten = $_POST['hoten'] ??'';
+            $gioitinh = $_POST['gioitinh'] ??'';
+            $mssv = $_POST['mssv'] ??'';
+            $sinhvienModel = $this->model('sinhvienModel');
+            $result = $sinhvienModel->update($id, $hoten, $gioitinh, $mssv);
+            if($result){
+                echo "Cập nhật thành công";
+            }else{
+                echo "Cập nhật thất bại";
+            }
+        }
+    }
+
+
     public function create() {
-        echo "Day la trang tao moi sinh vien";
         require_once '../app/views/sinhvien/create.php';
     }
     public function login() {
-        echo "Day la trang dang nhap";
         require_once '../app/views/sinhvien/login.php';
     }
 }
