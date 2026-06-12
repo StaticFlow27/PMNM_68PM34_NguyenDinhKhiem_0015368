@@ -1,8 +1,7 @@
 <?php 
-    require_once '../app/middleware.php';
-    $middleware = new middleware();
-    $middleware->checkLogin();
- 
-    $app = new App();
-    
+require_once '../app/middleware.php';
+$middleware = new middleware();
+$middleware->checkLogin();
+
+$app = new App();
 ?>

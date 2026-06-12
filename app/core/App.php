@@ -1,16 +1,15 @@
 <?php
-class App
-{
+class App{
     protected $controller = 'home';
     protected $action = 'index';
     protected $params = [];
 
-    public function __construct()
-    {
+    public function __construct(){
         // if (isset($_GET['url'])) {
         //     echo($_GET['url']);
         // }
         $urlProcessed = $this->UrlProcess();  //mảng url đã được xử lý
+
         //var_dump($urlProcessed);
         if (isset($urlProcessed[0])) {
             if (file_exists('../app/controllers/' . $urlProcessed[0] . '.php')) {
@@ -29,12 +28,11 @@ class App
         $this->params = $urlProcessed ? array_values($urlProcessed) : [];
         call_user_func_array([$this->controller, $this->action], $this->params);
     }
+    
     public function UrlProcess(){
         if (isset($_GET['url'])) {
             return explode('/', filter_var(trim($_GET['url'], '/')));
         }
     }
-
 }
-
 ?>

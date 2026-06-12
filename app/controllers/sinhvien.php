@@ -1,6 +1,7 @@
 <?php
 //require_once '../app/models/sinhvienModel.php';
 require_once '../app/core/Controller.php';
+
 class sinhvien extends Controller{
     public function index($limit = 3, $offset = 0, $search = ""){
         $sinhvienModel = $this->model('sinhvienModel');
@@ -37,8 +38,5 @@ class sinhvien extends Controller{
         echo "Day la trang dang nhap";
         require_once '../app/views/sinhvien/login.php';
     }
-
-
 }
-
 ?>
