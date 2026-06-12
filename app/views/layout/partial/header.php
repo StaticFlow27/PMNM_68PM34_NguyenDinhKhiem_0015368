@@ -18,6 +18,10 @@
         <a href="/home/index">Trang chu</a>
         <br>
         <a href="/sinhvien/index">Sinh vien</a>
+        <br>
+        <a href="/sinhvien/create">Them sinh vien</a>
+        <br>
+        <!-- <a href="/logout">Dang xuat</a> -->
     </div>
 </body>
 </html>
