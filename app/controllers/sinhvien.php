@@ -51,7 +51,16 @@ class sinhvien extends Controller{
         }
     }
 
-
+    public function delete($id) {
+        $sinhvienModel = $this->model('sinhvienModel');
+        $result = $sinhvienModel->delete($id);
+        if($result){
+            echo 'Xoa thanh cong';
+        }else{
+            echo 'Xoa that bai';
+        }
+    }
+    
     public function create() {
         require_once '../app/views/sinhvien/create.php';
     }

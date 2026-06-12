@@ -59,6 +59,11 @@ class sinhvienModel {
         return $stmt->execute();
     }
     
-
+    public function delete($id){
+        $query = "DELETE FROM tbl_sinhviens WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 }
 ?>

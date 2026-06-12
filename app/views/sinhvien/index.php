@@ -25,6 +25,8 @@
                 <td><?php echo $sinhvien['gioitinh']; ?></td>
                 <td>
                     <a href="/sinhvien/edit/<?php echo $sinhvien['id']; ?>">Sua</a>
+                    <a href="/sinhvien/delete/<?php echo $sinhvien['id']; ?>" 
+                    onclick="return confirm('Ban co muon xoa sinh vien nay?');">Xoa</a>
                 </td>
             </tr>
         <?php endforeach; ?>
